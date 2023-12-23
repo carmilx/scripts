@@ -1,0 +1,1 @@
+Get-ADComputer $(Computer:TARGET) -Properties LastLogonDate | FT Name,LastLogonDate
