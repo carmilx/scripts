@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# variables
+APP_NAME="Cloudflare"
+FILE=/Applications/Cloudflare\ WARP.app/Contents/Info.plist
+
 # Logging config
 LOG_NAME="cloudflare_removal.log"
 LOG_DIR="/Library/Logs"
@@ -50,16 +54,15 @@ logging() {
 logging "--" 
 logging "`date`"
 # Check if Cloudflare is installed
-FILE=/Applications/Cloudflare\ WARP.app/Contents/Info.plist
 if [ -f "$FILE" ]; then
-    logging "Cloudflare is installed."
-    logging "Running Cloudflare ./uninstall"
+    logging "${APP_NAME} is installed."
+    logging "Running ${APP_NAME} ./uninstall"
     cd /Applications/Cloudflare\ WARP.app/Contents/Resources
     ./uninstall.sh
-    logging "Cloudflare app has been removed from Applications folder."
+    logging "${APP_NAME} has been removed from Applications folder."
     logging "--"
 else
-    logging "Cloudflare is not installed."
+    logging "${APP_NAME} is not installed."
     logging "--"
 fi
 

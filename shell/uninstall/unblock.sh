@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# variables
+APP_NAME="Unblock"
+FILE=/Applications/Unblocked.app/Contents/Info.plist
+
 # Logging config
 LOG_NAME="unblocked_removal.log"
 LOG_DIR="/Library/Logs"
@@ -50,16 +54,15 @@ logging() {
 logging "--" 
 logging "`date`"
 # Check if docker is installed
-FILE=/Applications/Unblocked.app/Contents/Info.plist
 if [ -f "$FILE" ]; then
-    logging "Unblocked is installed."
-    logging "Deleting Unblocked.app from Applications folder."
+    logging "${APP_NAME} is installed."
+    logging "Deleting ${APP_NAME} from Applications folder."
     cd /Applications
     rm -r /Applications/Unblocked.app
-    logging "Unblocked app has been removed from Applications folder."
+    logging "${APP_NAME} has been removed from Applications folder."
     logging "--"
 else
-    logging "Unblocked is not installed."
+    logging "${APP_NAME} is not installed."
     logging "--"
 fi
 

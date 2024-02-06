@@ -1,10 +1,9 @@
 #!/bin/bash
 
-# removal variables
-appname="Sequel Pro"
+# variables
+APP_NAME="Sequel Pro"
 FILE=/Applications/Sequel\ Pro.app/Contents
 
-# Logging config
 LOG_NAME="sequel_pro.log"
 LOG_DIR="/Library/Logs"
 LOG_PATH="$LOG_DIR/$LOG_NAME"
@@ -54,13 +53,13 @@ logging() {
 logging "--" 
 logging "`date`"
 if [ -d "$FILE" ]; then
-    logging "${appname} is installed."
+    logging "${APP_NAME} is installed."
     # Remove /Applications/Sequel Pro.app
     rm -r /Applications/Sequel\ Pro.app
-    logging "${appname} has been removed from Applications folder."
+    logging "${APP_NAME} has been removed from Applications folder."
     logging "--"
 else
-    logging "${appname} is not installed."
+    logging "${APP_NAME} is not installed."
     logging "--"
 fi
 

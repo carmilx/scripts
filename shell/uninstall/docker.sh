@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# variables
+APP_NAME="Docker"
+FILE=/Applications/Docker.app/Contents/Info.plist
+
 # Logging config
 LOG_NAME="docker_removal.log"
 LOG_DIR="/Library/Logs"
@@ -50,19 +54,18 @@ logging() {
 logging "--" 
 logging "`date`"
 # Check if docker is installed
-FILE=/Applications/Docker.app/Contents/Info.plist
 if [ -f "$FILE" ]; then
-    logging "Docker is installed."
-    logging "Running Docker ./uninstall"
+    logging "${APP_NAME} is installed."
+    logging "Running ${APP_NAME} ./uninstall"
     cd /Applications/Docker.app/Contents/MacOS/
     ./uninstall
-    logging "Deleting Docker.app from Applications folder."
+    logging "Deleting ${APP_NAME} from Applications folder."
     cd /Applications
     rm -r /Applications/Docker.app
-    logging "Docker app has been removed from Applications folder."
+    logging "${APP_NAME} has been removed from Applications folder."
     logging "--"
 else
-    logging "Docker is not installed."
+    logging "${APP_NAME} is not installed."
     logging "--"
 fi
 
